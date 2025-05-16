@@ -49,6 +49,6 @@ import CopyRightSection from "assets/helpers/components/CopyRightSection.vue";
 
 const router = useRoute();
 
-const menuPaths = ["/menu", "/location/menu", "/location/menu/checkout/success", "/gift"];
+const menuPaths = ["/menu", "/location/menu", "/location/delivery", "/location/menu/checkout/success", "/gift"];
 const isMenu = menuPaths.some(path => router.path.startsWith(path));
 </script>

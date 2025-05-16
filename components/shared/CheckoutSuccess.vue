@@ -100,7 +100,19 @@
             </p>
             <p class="text-sm text-gray-500">x1</p>
           </div>
-          <div class="font-medium flex items-center">$25</div>
+          <div class="font-medium flex items-center">${{item.price}}</div>
+        </div>
+
+        <h2 class="py-5">Drinks</h2>
+        <div class="flex mb-4" v-for="item in orderStore.drinkCardItems">
+          <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+            <img :src="item.image" alt="Build Your Own Poke Bowl" class="w-full h-full object-cover" />
+          </div>
+          <div class="flex-1 flex flex-col justify-center">
+            <h3 class="font-medium">{{item.name}}</h3>
+            <p class="text-sm text-gray-500">x1</p>
+          </div>
+          <div class="font-medium flex items-center">${{item.price}}</div>
         </div>
       </div>
 

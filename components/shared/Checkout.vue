@@ -9,41 +9,88 @@
 
             <div class="bg-white rounded-lg shadow-sm">
               <!-- Order Items -->
-              <div v-if="orderStore.orderItems.length > 0">
-                <div v-for="(item, index) in orderStore.orderItems" :key="index"
-                     :class="{'border-b border-gray-200': index < orderStore.orderItems.length - 1}"
-                     class="p-4 flex items-center">
-                  <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
-                    <img
-                        :src="item.image"
-                        alt="images"
-                        class="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div class="flex-1">
-                    <h3 class="font-medium">{{ item.title }}</h3>
-                    <p class="text-sm text-gray-500">{{ item.description }}</p>
-                  </div>
-                  <div class="text-lg font-medium ml-4">${{ item.price }}</div>
-                  <div class="ml-4 flex space-x-3">
-                    <button class="text-gray-400 hover:text-gray-600">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path
-                            d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
-                      </svg>
-                    </button>
-                    <button @click="orderStore.clearOrder" class="text-gray-400 hover:text-gray-600 cursor-pointer">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd"
-                              d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                              clip-rule="evenodd"/>
-                      </svg>
-                    </button>
+              <div>
+                <h2 class="px-5 py-5">You're own bowl</h2>
+              </div>
+              <div>
+                <div v-if="orderStore.orderItems.length > 0">
+                  <div v-for="(item, index) in orderStore.orderItems" :key="index"
+                       :class="{'border-b border-gray-200': index < orderStore.orderItems.length - 1}"
+                       class="p-4 flex items-center">
+                    <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+                      <img
+                          :src="item.image"
+                          alt="images"
+                          class="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div class="flex-1">
+                      <h3 class="font-medium">{{ item.title }}</h3>
+                      <p class="text-sm text-gray-500">{{ item.description }}</p>
+                    </div>
+                    <div class="text-lg font-medium ml-4">${{ item.price }}</div>
+                    <div class="ml-4 flex space-x-3">
+                      <button class="text-gray-400 hover:text-gray-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                          <path
+                              d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
+                        </svg>
+                      </button>
+                      <button @click="orderStore.clearOrder" class="text-gray-400 hover:text-gray-600 cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd"
+                                d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                clip-rule="evenodd"/>
+                        </svg>
+                      </button>
+                    </div>
                   </div>
                 </div>
+                <div v-else class="h-[51px] flex items-center justify-center text-sm text-gray-500">
+                  <span>No Order</span>
+                </div>
               </div>
-              <div v-else class="h-[51px] flex items-center justify-center text-sm text-gray-500">
-                <span>No Order</span>
+              <!--Drinks Items-->
+              <div>
+                <div>
+                  <h2 class="px-5">Drinks</h2>
+                </div>
+                <div v-if="orderStore.drinkCardItems.length > 0">
+                  <div
+                      v-for="(item, index) in orderStore.drinkCardItems" :key="index"
+                      :class="{'border-b border-gray-200': index < orderStore.drinkCardItems.length - 1}"
+                      class="p-4 flex items-center">
+                    <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+                      <img
+                          :src="item.image"
+                          alt="images"
+                          class="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div class="flex-1">
+                      <h3 class="font-medium">{{ item.name }}</h3>
+                    </div>
+                    <div class="text-lg font-medium ml-4">${{ item.price }}</div>
+                    <div class="ml-4 flex space-x-3">
+                      <button class="text-gray-400 hover:text-gray-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                          <path
+                              d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
+                        </svg>
+                      </button>
+                      <button @click="orderStore.removeDrinks" class="text-gray-400 hover:text-gray-600 cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd"
+                                d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                clip-rule="evenodd"/>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div v-else class="h-[51px] flex items-center justify-center text-sm text-gray-500">
+                  <span>No Drinks</span>
+                </div>
               </div>
             </div>
           </div>
@@ -143,13 +190,28 @@
             />
           </div>
         </div>
+
+        <div>
+          <h2 class="text-[24px] font-semibold">Drinks</h2>
+          <div class="grid grid-cols-4 gap-16 py-36">
+            <DrinkCard
+                v-for="item in drinkItems"
+                :key="item.id"
+                :id="item.id"
+                :image="item.image"
+                :name="item.name"
+                :price="item.price"
+            />
+          </div>
+        </div>
+
         <Modal/>
       </Container>
     </div>
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import {ref, computed} from 'vue'
 import {useOrderStore} from "@/stores/order.js";
 import {foodItems} from "~/components/food/core/dummy/dummy.js";
@@ -158,6 +220,8 @@ import Container from "~/components/ui/Container.vue";
 import Modal from "~/components/ui/Modal.vue";
 
 import visaIcon from '@/assets/images/icons/Image 174.png';
+import {drinkItems} from "~/components/location/core/dummy/dummy";
+import DrinkCard from "~/components/ui/DrinkCard.vue";
 
 // Voucher functionality
 const voucherCode = ref('');

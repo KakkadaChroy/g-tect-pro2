@@ -2,6 +2,7 @@ import {defineStore} from 'pinia';
 import {ref} from 'vue';
 import type {ID} from "assets/ts/model";
 import type {FoodModel} from "~/components/food/core/model";
+import type {DrinkModel} from "~/components/location/core/model";
 
 export const useOrderStore = defineStore('order', () => {
     // init state
@@ -9,6 +10,9 @@ export const useOrderStore = defineStore('order', () => {
     const selectedItemId = ref(null);
     const orderItems = ref<FoodModel[]>([]);
     const totalPrice = ref(0);
+    const isAdded = ref(false);
+    const drinkId = ref(null);
+    const drinkCardItems = ref<DrinkModel[]>([]);
 
     // handler functions
     const handleOpen = (id: ID) => {
@@ -25,9 +29,17 @@ export const useOrderStore = defineStore('order', () => {
     const clearOrder = () => {
         orderItems.value = [];
     };
-
     const setTotal = (total) => {
         totalPrice.value = total;
+    }
+    const setIsDrinkId = (id: ID) => {
+        drinkId.value = id;
+    }
+    const addDrinkToCart = (drinkItems: DrinkModel) => {
+        drinkCardItems.value.push(drinkItems);
+    }
+    const removeDrinks = () => {
+        drinkCardItems.value = [];
     }
 
 
@@ -36,6 +48,9 @@ export const useOrderStore = defineStore('order', () => {
         isModal,
         orderItems,
         totalPrice,
+        isAdded,
+        drinkId,
+        drinkCardItems,
 
         // functions
         handleOpen,
@@ -43,7 +58,10 @@ export const useOrderStore = defineStore('order', () => {
         selectedItemId,
         addToOrder,
         clearOrder,
-        setTotal
+        setTotal,
+        setIsDrinkId,
+        addDrinkToCart,
+        removeDrinks
     };
 }, {
     persist: true

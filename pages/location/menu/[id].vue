@@ -36,12 +36,25 @@
           />
         </div>
       </div>
-      <div>
-        <h2 class="text-[24px]">Drink</h2>
+      <div class="w-full">
+        <div
+            class="flex justify-between"
+        >
+          <h2 class="text-[24px]">Drink</h2>
+          <div class="flex gap-5 items-center" v-if="orderStore.isAdded">
+            <button
+                @click="navigateTo('/location/menu/checkout')"
+                class="bg-warning hover:bg-orange-500/60 transition-colors duration-300 rounded-full px-5 py-2 text-white"
+            >
+              Checkout Now
+            </button>
+          </div>
+        </div>
         <div class="grid grid-cols-4 gap-16 py-36">
           <DrinkCard
               v-for="item in drinkItems"
               :key="item.id"
+              :id="item.id"
               :image="item.image"
               :name="item.name"
               :price="item.price"
@@ -86,12 +99,12 @@ const parsId = parseInt(id);
 
 // state
 const storedItems = ref<PokeBarLocation | null>(null);
+const orderStore = useOrderStore();
 
 // find data from list
 onMounted(() => {
   storedItems.value = locationsItems.find(item => item.id === parsId) || null;
 })
-
 
 useHead({
   title: 'Location Menu',

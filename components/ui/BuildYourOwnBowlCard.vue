@@ -37,7 +37,6 @@ const props = defineProps<{
 
 // Function
 const openModalWithId = () => {
-  console.log('Opening modal with ID:', props.id);
   orderStore.handleOpen(props.id);
 };
 
