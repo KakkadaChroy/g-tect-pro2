@@ -47,8 +47,17 @@ import logo from '@/assets/images/logo/White-Logo.png';
 import NavMenu from "assets/helpers/components/NavMenu.vue";
 import CopyRightSection from "assets/helpers/components/CopyRightSection.vue";
 
-const router = useRoute();
+const route = useRoute();
 
-const menuPaths = ["/menu", "/location/menu", "/location/delivery", "/location/menu/checkout/success", "/gift"];
-const isMenu = menuPaths.some(path => router.path.startsWith(path));
+const menuPaths = [
+  "/menu",
+  "/location/menu",
+  "/location/delivery",
+  "/location/menu/checkout/success",
+  "/gift"
+]
+
+const isMenu = computed(() =>
+    menuPaths.some(path => route.path.startsWith(path))
+)
 </script>
